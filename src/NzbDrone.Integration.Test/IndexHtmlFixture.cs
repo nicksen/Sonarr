@@ -31,8 +31,6 @@ namespace NzbDrone.Integration.Test
             var headers = response.Headers;
 
             headers.CacheControl.NoStore.Should().BeTrue();
-            headers.CacheControl.NoCache.Should().BeTrue();
-            headers.Pragma.Should().Contain(new NameValueHeaderValue("no-cache"));
 
             response.Content.Headers.Expires.Should().BeBefore(DateTime.UtcNow);
         }

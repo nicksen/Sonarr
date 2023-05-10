@@ -177,9 +177,8 @@ namespace Sonarr.Http.Extensions
         public static void DisableCache(this IHeaderDictionary headers)
         {
             headers.Remove("Last-Modified");
-            headers["Cache-Control"] = "no-cache, no-store";
+            headers["Cache-Control"] = "no-store";
             headers["Expires"] = "-1";
-            headers["Pragma"] = "no-cache";
         }
 
         public static void EnableCache(this IHeaderDictionary headers)
