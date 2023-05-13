@@ -29,7 +29,7 @@ namespace NzbDrone.Core.Datastore.Migration
             using (IDbCommand qualityModelCmd = conn.CreateCommand())
             {
                 qualityModelCmd.Transaction = tran;
-                qualityModelCmd.CommandText = @"SELECT Distinct ""Quality"" FROM """ + tableName + "\"";
+                qualityModelCmd.CommandText = $"SELECT Distinct \"Quality\" FROM \"{tableName}\"";
 
                 using (IDataReader qualityModelReader = qualityModelCmd.ExecuteReader())
                 {
@@ -39,7 +39,7 @@ namespace NzbDrone.Core.Datastore.Migration
 
                         LegacyQualityModel062 quality;
 
-                        if (!Json.TryDeserialize<LegacyQualityModel062>(qualityJson, out quality))
+                        if (!Json.TryDeserialize(qualityJson, out quality))
                         {
                             continue;
                         }

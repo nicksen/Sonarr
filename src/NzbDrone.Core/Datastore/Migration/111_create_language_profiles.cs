@@ -87,7 +87,7 @@ namespace NzbDrone.Core.Datastore.Migration
             using (IDbCommand getProfilesCmd = conn.CreateCommand())
             {
                 getProfilesCmd.Transaction = tran;
-                getProfilesCmd.CommandText = @"SELECT ""Id"", ""Language"" FROM ""Profiles""";
+                getProfilesCmd.CommandText = "SELECT \"Id\", \"Language\" FROM \"Profiles\"";
 
                 using (IDataReader profileReader = getProfilesCmd.ExecuteReader())
                 {

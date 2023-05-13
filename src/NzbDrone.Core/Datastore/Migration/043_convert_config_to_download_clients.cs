@@ -22,7 +22,7 @@ namespace NzbDrone.Core.Datastore.Migration
             using (IDbCommand configCmd = conn.CreateCommand())
             {
                 configCmd.Transaction = tran;
-                configCmd.CommandText = @"SELECT * FROM ""Config""";
+                configCmd.CommandText = "SELECT * FROM \"Config\"";
                 using (IDataReader configReader = configCmd.ExecuteReader())
                 {
                     var keyIndex = configReader.GetOrdinal("Key");

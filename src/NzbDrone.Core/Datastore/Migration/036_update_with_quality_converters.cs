@@ -32,7 +32,7 @@ namespace NzbDrone.Core.Datastore.Migration
             using (IDbCommand qualityProfileCmd = conn.CreateCommand())
             {
                 qualityProfileCmd.Transaction = tran;
-                qualityProfileCmd.CommandText = @"SELECT ""Id"", ""Allowed"" FROM ""QualityProfiles""";
+                qualityProfileCmd.CommandText = "SELECT \"Id\", \"Allowed\" FROM \"QualityProfiles\"";
                 using (IDataReader qualityProfileReader = qualityProfileCmd.ExecuteReader())
                 {
                     while (qualityProfileReader.Read())
@@ -75,7 +75,7 @@ namespace NzbDrone.Core.Datastore.Migration
             using (IDbCommand qualityModelCmd = conn.CreateCommand())
             {
                 qualityModelCmd.Transaction = tran;
-                qualityModelCmd.CommandText = @"SELECT Distinct ""Quality"" FROM """ + tableName + "\"";
+                qualityModelCmd.CommandText = $"SELECT Distinct \"Quality\" FROM \"{tableName}\"";
                 using (IDataReader qualityModelReader = qualityModelCmd.ExecuteReader())
                 {
                     while (qualityModelReader.Read())
@@ -84,7 +84,7 @@ namespace NzbDrone.Core.Datastore.Migration
 
                         SourceQualityModel036 sourceQuality;
 
-                        if (!Json.TryDeserialize<SourceQualityModel036>(qualityJson, out sourceQuality))
+                        if (!Json.TryDeserialize(qualityJson, out sourceQuality))
                         {
                             continue;
                         }
